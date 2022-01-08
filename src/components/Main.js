@@ -14,7 +14,17 @@ function Main(props) {
   const getPeople = async () => {
     const response = await fetch(URL)
     const data = await response.json()
+    console.log('getPeople - data', data)
     setPeople(data)
+  }
+
+  const createPeople = async (person) => {
+    await fetch(URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(person)
+    })
+    getPeople() //will create the new person first and return all the people once completed
   }
 
   // run getPeople once when component is mounted
@@ -24,9 +34,9 @@ function Main(props) {
     <main>
       <Switch>
         <Route exact path='/'>
-          <Index people={people} />
+          <Index people={people} createPeople={createPeople} />
         </Route>
-        <Route path="/people/:id" render={(rp) => <Show {...rp}/>}/>
+        <Route path="/people/:id" render={(rp) => <Show {...rp} />} />
       </Switch>
     </main>
   )
