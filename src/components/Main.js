@@ -1,5 +1,19 @@
-function Component(props) {
-  return <h1>Component Name</h1>
+import { Route, Switch } from 'react-router-dom'
+import Index from '../pages/Index'
+import Show from '../pages/Show'
+
+
+function Main(props) {
+  return (
+    <main>
+      <Switch>
+        <Route exact path='/'>
+          <Index />
+        </Route>
+        <Route /> 
+      </Switch>
+    </main>
+  )
 }
 
-export default Component
+export default Main;

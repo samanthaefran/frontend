@@ -1,5 +1,5 @@
-function Component(props) {
-  return <h1>Component Name</h1>
+function Header(props) {
+  return <h1>Header</h1>
 }
 
-export default Component
+export default Header;
