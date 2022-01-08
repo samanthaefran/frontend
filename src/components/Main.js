@@ -10,7 +10,7 @@ function Main(props) {
         <Route exact path='/'>
           <Index />
         </Route>
-        <Route /> 
+        <Route path="/people/:id" render={(rp) => <Show {...rp}/>}/>
       </Switch>
     </main>
   )
