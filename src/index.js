@@ -1,13 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
+// IMPORT SCSS FILE
+import './styles.scss'
 import './index.css';
+
+// IMPORT ROUTER
+import { BrowserRouter as Router } from 'react-router-dom' // allow routing in our application 
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
+  <Router>
   <React.StrictMode>
     <App />
-  </React.StrictMode>,
+  </React.StrictMode>
+  </Router>,
   document.getElementById('root')
 );
 
