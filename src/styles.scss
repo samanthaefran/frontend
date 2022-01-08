@@ -1,0 +1,36 @@
+// --------------------------
+// VARIABLES
+// --------------------------
+$maincolor: #369369;
+$contrastcolor: white;
+
+@mixin white-text-black-bg {
+  color: $contrastcolor;
+  background-color: $maincolor;
+}
+
+@mixin black-text-white-bg {
+  color: $maincolor;
+  background-color: $contrastcolor;
+}
+
+// --------------------------
+// Header
+// --------------------------
+
+
+nav {
+  @include white-text-black-bg; // include makes the "@mixin" work in a class without having to rewrite code
+  display: flex;
+  justify-content: flex-end;
+
+  a {
+    @include white-text-black-bg;
+
+    div {
+      margin: 10px;
+      font-size: large;
+    }
+  }
+}
+
