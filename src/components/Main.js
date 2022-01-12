@@ -7,7 +7,7 @@ import Show from '../pages/Show'
 function Main(props) {
   const [people, setPeople] = useState(null)
 
-  const URL = "https://backend-samantha.herokuapp.com/people"
+  const URL = "https://backend-samantha.herokuapp.com/people/"
   // const URL = "http://localhost:3001/people/"
 
   // retrieve all the people
@@ -27,6 +27,17 @@ function Main(props) {
     getPeople() //will create the new person first and return all the people once completed
   }
 
+  const updatePeople = async (person, id) => { 
+    await fetch(URL + id, {
+      method: "PUT",
+      headers: { 
+        'Content-Type': 'Application/json'
+      },
+      body: JSON.stringify(person)
+    });
+    getPeople();
+  }
+
   // run getPeople once when component is mounted
   useEffect(() => getPeople(), [])
 
@@ -36,7 +47,12 @@ function Main(props) {
         <Route exact path='/'>
           <Index people={people} createPeople={createPeople} />
         </Route>
-        <Route path="/people/:id" render={(rp) => <Show {...rp} />} />
+        <Route path="/people/:id" render={(rp) => (
+          <Show
+            {...rp}
+            people={people} 
+          />
+        )} />
       </Switch>
     </main>
   )

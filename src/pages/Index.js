@@ -27,6 +27,7 @@ function Index(props) {
       title: "",
     })
   }
+
   // loaded function
   const loaded = () => {
     return props.people.map((person) => (
@@ -34,7 +35,7 @@ function Index(props) {
         <Link to={`/people/${person._id}`}>
           <h1>{person.name}</h1>
         </Link>
-        {/* <img src={person.image} alt={person.name} /> */}
+        <img src={person.image} alt={person.name} />
         <h3>{person.title}</h3>
       </div>
     ));
@@ -46,7 +47,7 @@ function Index(props) {
 
   return (
     <section>
-      <form onSubmit={handleSubmit}>
+      <form style={{ marginTop: '5rem' }} onSubmit={handleSubmit}>
         <input
           type="text"
           value={newForm.name}
@@ -54,6 +55,7 @@ function Index(props) {
           placeholder="name"
           onChange={handleChange}
         />
+        <br />
         <input
           type="text"
           value={newForm.image}
@@ -61,6 +63,7 @@ function Index(props) {
           placeholder="image URL"
           onChange={handleChange}
         />
+        <br />
         <input
           type="text"
           value={newForm.title}
@@ -68,6 +71,7 @@ function Index(props) {
           placeholder="title"
           onChange={handleChange}
         />
+        <br />
         <input type="submit" value="Create Person" />
       </form>
       {props.people ? loaded() : loading()}
