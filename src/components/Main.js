@@ -39,6 +39,13 @@ function Main(props) {
     getPeople();
   }
 
+  const deletePeople = async(id) => {
+    await fetch(URL + id, {
+      method:'DELETE'
+    })
+    getPeople();
+  }
+
   // run getPeople once when component is mounted
   useEffect(() => getPeople(), [])
 
@@ -52,6 +59,7 @@ function Main(props) {
           <Show
             {...rp}
             updatePeople={updatePeople}
+            deletePeople={deletePeople}
             people={people} 
           />
         )} />

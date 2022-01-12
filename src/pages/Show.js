@@ -18,6 +18,12 @@ function Show(props) {
     props.updatePeople(editForm, id); // using the id variable we created to match the user id 
     props.history.push('/'); // this is going to redirect 
   }
+
+  const handleClick = () => {
+    props.deletePeople(id);
+    props.history.push('/');
+  }
+
   return (
     <div className="person">
       <h1>{person.name}</h1>
@@ -26,7 +32,8 @@ function Show(props) {
         person.image &&
         <img src={person.image} alt={person.name} /> // if person.image is undefined, then it will not render an image. if person.image is a url string it will render an image
       }
-      <form style={{ marginTop: '5rem' }} onSubmit={handleSubmit}>
+      <button id="delete" onClick={handleClick}>Delete</button>
+      <form style={{ marginTop: '3rem' }} onSubmit={handleSubmit}>
         <input
           type="text"
           name="name"
@@ -34,6 +41,7 @@ function Show(props) {
           value={editForm.name}
           onChange={handleChange} // used to set our state based on what the user is typing
         />
+        <br />
         <input
           type="text"
           name="image"
@@ -41,6 +49,7 @@ function Show(props) {
           value={editForm.image}
           onChange={handleChange} // used to set our state based on what the user is typing
         />
+        <br />
         <input
           type="text"
           name="title"
