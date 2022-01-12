@@ -50,6 +50,7 @@ function Main(props) {
         <Route path="/people/:id" render={(rp) => (
           <Show
             {...rp}
+            updatePeople={updatePeople}
             people={people} 
           />
         )} />
