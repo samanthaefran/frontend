@@ -12,7 +12,7 @@ function Index(props) {
   // handleChange function for form
   const handleChange = (event) => {
     setNewForm((prevState) => ({
-      ...prevState,
+      ...prevState, // callback pattern - alternative way to spread exisisting state into your setter function
       [event.target.name]: event.target.value, // converts whichever input field a user types in to the value of that input
     }))
   }

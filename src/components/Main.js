@@ -27,6 +27,7 @@ function Main(props) {
     getPeople() //will create the new person first and return all the people once completed
   }
 
+  // function that is responsible for initiating the put function
   const updatePeople = async (person, id) => { 
     await fetch(URL + id, {
       method: "PUT",
